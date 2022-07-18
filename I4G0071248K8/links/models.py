@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from .managers import ActiveLinkManager
 
 User=get_user_model()
 
@@ -10,3 +11,5 @@ class Link(models.Model):
     identifier = models.SlugField(max_length=20, unique=True, blank=True)
     created_date = models.DateTimeField()
     active = models.BooleanField(default= True)
+    objects = models.Manager()
+    public = ActiveLinkManager()
